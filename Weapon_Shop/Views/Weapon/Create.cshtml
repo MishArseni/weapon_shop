@@ -1,0 +1,26 @@
+﻿@model Weapon_Shop.Feature.Weapon.Create.Command
+
+<form asp-action="Create" asp-controller="Weapon" method="post" enctype="multipart/form-data" class="form">
+
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Name">Название</label><br />
+        <input asp-for="Name" />
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Price">Цена</label><br />
+        <input asp-for="Price" />
+        <span asp-validation-for="Price" />
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Description">Описание</label><br />
+        <input asp-for="Description" />
+        <span asp-validation-for="Description" />
+    </div>
+    <div class="form-group">
+        <label>Картинка</label>
+        <input asp-for="Avatar" name="Avatar" type="file" class="form-control" />
+    </div>
+    <div>
+        <input type="submit" value="Создать" class="btn btn-primary" />
+    </div>
+</form>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Infastructure.Entities.Weapon>
+
+@foreach (var weapon in Model)
+{
+<img style='width:150px; height:120px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(weapon.Avatar))" />
+    <span>@weapon.Name</span>
+    <span>@weapon.Price</span>
+    <span>@weapon.Description</span>
+    <a class="btn" asp-controller="Cart" asp-action="Add" asp-route-Id="@weapon.Id">В корзину</a>
+    <a class="btn" asp-controller="Weapon" asp-action="Delete" asp-route-Id="@weapon.Id">Удалить</a>
+}
