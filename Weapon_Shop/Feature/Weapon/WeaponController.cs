@@ -1,9 +1,11 @@
 ﻿using Infastructure.Identity;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Weapon_Shop.Feature.Weapon
@@ -20,6 +22,9 @@ namespace Weapon_Shop.Feature.Weapon
 
         public ActionResult Index()
         {
+            if (HttpContext.Session.GetString("Cart") != null)
+               ViewBag.Weapons = JsonSerializer.Deserialize<List<Infastructure.Entities.Weapon>>(HttpContext.Session.GetString("Cart")).Select(x=>x.Id);
+            
             return View(_context.Weapon.ToList());
         }
 
@@ -33,7 +38,7 @@ namespace Weapon_Shop.Feature.Weapon
         public async Task<IActionResult> Create(Create.Command command)
         {
             await _mediator.Send(command);
-            return RedirectToAction("/");
+            return RedirectToAction("Index","Weapon");
         }
 
         public async Task<IActionResult> Delete(Delete.Command command)

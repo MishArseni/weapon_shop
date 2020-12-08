@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Weapon_Shop.Feature.Authentication
@@ -17,7 +18,7 @@ namespace Weapon_Shop.Feature.Authentication
             public string Password { get; set; }
         }
 
-        public class Handler : RequestHandler<Command>
+        public class Handler : AsyncRequestHandler<Command>
         {
             private readonly SignInManager<ApplicationUser> _signInManager;
 
@@ -26,7 +27,7 @@ namespace Weapon_Shop.Feature.Authentication
                 _signInManager = signInManager;
             }
 
-            protected override async void Handle(Command request)
+            protected override async Task Handle(Command request, CancellationToken cancellationToken)
             {
                 await _signInManager.PasswordSignInAsync(request.Email, request.Password, false, false);
             }

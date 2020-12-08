@@ -1,11 +1,34 @@
 ﻿@model IEnumerable<Infastructure.Entities.Weapon>
 
-@foreach (var weapon in Model)
-{
-<img style='width:150px; height:120px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(weapon.Avatar))" />
-    <span>@weapon.Name</span>
-    <span>@weapon.Price</span>
-    <span>@weapon.Description</span>
-    <a class="btn" asp-controller="Cart" asp-action="Add" asp-route-Id="@weapon.Id">В корзину</a>
-    <a class="btn" asp-controller="Weapon" asp-action="Delete" asp-route-Id="@weapon.Id">Удалить</a>
-}
+<div class="my__catalog">
+    @foreach (var weapon in Model)
+    {
+    <div class="cart__container">
+        <div class="card" style="width: 18rem;">
+            <img style='width:150px; height:120px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(weapon.Avatar))" />
+            <div class="card-body">
+                <h5 class="card-title"><a asp-controller="Feature" asp-action="Index" asp-route-id="@weapon.Id">@weapon.Name</a></h5>
+                <p class="card-text">@weapon.Price</p>
+                <p class="card-text">@weapon.Description</p>
+
+                @if (ViewBag.Weapons != null)
+                {
+                    @if (false)
+                    {
+                        <a class="btn btn-primary" asp-controller="Cart" asp-action="Delete" asp-route-Id="@weapon.Id">Убрать из корзины</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary" asp-controller="Cart" asp-action="Add" asp-route-Id="@weapon.Id">В корзину</a>
+                    }
+                }
+                else
+                {
+                    <a class="btn btn-primary" asp-controller="Cart" asp-action="Add" asp-route-Id="@weapon.Id">В корзину</a>
+                }
+                <a class="btn btn-danger" asp-controller="Weapon" asp-action="Delete" asp-route-Id="@weapon.Id">Убрать</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>

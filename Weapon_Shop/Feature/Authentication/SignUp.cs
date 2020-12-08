@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Weapon_Shop.Feature.Authentication
         {
             public string Email { get; set; }
             public string UserName { get; set; }
+  
             public string Password { get; set; }
             public string ConfirmPassword { get; set; }
         }
@@ -36,16 +38,17 @@ namespace Weapon_Shop.Feature.Authentication
                 _mapper = mapper;
                 _emailSender = emailSender;
             }
-            protected override async Task Handle(Command request, CancellationToken cancellationToken)
+            protected override async  Task Handle(Command request, CancellationToken cancellationToken)
             {
                 ApplicationUser user = _mapper.Map<Command, ApplicationUser>(request);
                 var result = await _userManager.CreateAsync(user, request.Password);
 
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, false);
+                   await _signInManager.SignInAsync(user, false);
                    //await _emailSender.SendEmailAsync(user.Email, "Регистрация нового пользователя", "Спасибо за регистрацию в веб-приложении Weapon_Shop");
                 }
+
             }
         }
     }

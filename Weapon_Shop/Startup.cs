@@ -32,7 +32,15 @@ namespace Weapon_Shop
             services.AddDbContext<AppIdentityDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(opts=>
+            {
+                opts.Password.RequiredLength = 4;
+                opts.Password.RequireDigit = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireUppercase = false;
+       
+            })
                 .AddEntityFrameworkStores<AppIdentityDbContext>();
             services.AddControllersWithViews();
 
@@ -46,6 +54,7 @@ namespace Weapon_Shop
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseAuthentication();
             app.UseSession();
             if (env.IsDevelopment())
             {
@@ -62,7 +71,7 @@ namespace Weapon_Shop
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseAuthorization();
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

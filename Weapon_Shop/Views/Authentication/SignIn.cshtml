@@ -1,14 +1,45 @@
 ﻿@model Weapon_Shop.Feature.Authentication.SignIn.Command
 
-<form asp-action="SignIn" asp-controller="Authentication" asp-anti-forgery="true">
-    <div class="form-group">
-        <label asp-for="Email">Введите UserName</label><br />
-        <input type="text" asp-for="Email" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <title></title>
+    <meta name="description" content="Login and Register Form Html Template">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+</head>
+<body>
+
+    <!-- Preloader End -->
+
+    <div id="main-wrapper" class="oxyy-login-register h-100 d-flex flex-column bg-transparent">
+        <div class="container my-auto">
+            <div class="row no-gutters h-100">
+                <div class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4 m-auto py-5">
+                    <p class="lead text-center mb-3">Рады видеть тебя снова! Проходи!</p>
+                    <form id="registerForm" method="post">
+                        <div class="vertical-input-group">
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="emailAddress" required placeholder="Email Address" asp-for="Email">
+                            </div>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="loginPassword" required placeholder="Password" asp-for="Password">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block shadow-none my-4" type="submit" asp-action="SignIn">Войти</button>
+                    </form>
+                    <p class="text-center text-muted mb-3">Еще нет аккаунта? <a class="btn-link" asp-action="SignUp" asp-controller="Authentication">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Password">Введите пароль</label><br />
-        <input asp-for="Password" />
-        <span asp-validation-for="Password" />
-    </div>
-    <input class="btn btn-primary" type="submit" value="Войти" />
-</form>
+
+</body>
+</html>

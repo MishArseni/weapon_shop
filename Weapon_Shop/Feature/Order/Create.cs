@@ -17,6 +17,7 @@ namespace Weapon_Shop.Feature.Order
         public class Command : IRequest
         {
             public string Value { get; set; }
+            public string UseName { get; set; }
         }
 
         public class Handler : AsyncRequestHandler<Command>
@@ -30,7 +31,23 @@ namespace Weapon_Shop.Feature.Order
             {
                 List<Infastructure.Entities.Weapon> weapons = new List<Infastructure.Entities.Weapon>();
                 weapons = JsonSerializer.Deserialize<List<Infastructure.Entities.Weapon>>(request.Value);
-                Console.WriteLine("Hello");
+
+                Infastructure.Entities.Order order = new Infastructure.Entities.Order 
+                {
+                    Date = DateTime.Now, Count = weapons.Count,
+                    Price = weapons.Sum(x => x.Price),
+                    User = _context.Users.FirstOrDefault(x => x.UserName == request.UseName) 
+                };
+
+                await _context.Orders.AddAsync(order);
+                _context.SaveChanges();
+
+                foreach(var weapon in weapons)
+                {
+                    await _context.AddAsync(new Infastructure.Entities.OrderWeapon { OrderId = order.Id, WeaponId = weapon.Id });
+                }
+
+                _context.SaveChanges();
             }
         }
     }

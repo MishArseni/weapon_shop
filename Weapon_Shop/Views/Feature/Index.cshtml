@@ -1,0 +1,23 @@
+﻿@model Infastructure.Entities.Weapon_Feature
+
+@if (Model != null)
+{
+
+
+    <h1>Данная модель имеет характеристики:</h1>
+
+    <ul>
+        <li>Страна: @Model.Country</li>
+        <li>Калибр: @Model.Caliber</li>
+        <li>Вместимость: @Model.Capacity</li>
+        <li>Материал: @Model.Material</li>
+        <li>Скорость полета пули: @Model.Speed</li>
+        <li>Вес: @Model.Weight</li>
+        <li>Тип: @Model.Type</li>
+    </ul>
+}
+else
+{
+    <h1>Кажется, вы не добавили характеристики для данной модели</h1>
+    <a class="btn btn-primary" asp-controller="Feature" asp-action="Create">Добавить!</a>
+}

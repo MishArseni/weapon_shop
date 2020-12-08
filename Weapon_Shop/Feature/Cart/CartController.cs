@@ -30,22 +30,23 @@ namespace Weapon_Shop.Feature.Cart
             }
 
             HttpContext.Session.SetString("Cart", JsonSerializer.Serialize<List<Infastructure.Entities.Weapon>>(weapons));
-            return Content($"{HttpContext.Session.GetString("Cart")}");
+            return RedirectToAction("Index", "Cart");
         }
 
-        public ActionResult Get()
+        public ActionResult Index()
         {
-            weapons = JsonSerializer.Deserialize<List<Infastructure.Entities.Weapon>>(HttpContext.Session.GetString("Cart"));
-            return View();
+            if (HttpContext.Session.GetString("Cart") != null)
+                weapons = JsonSerializer.Deserialize<List<Infastructure.Entities.Weapon>>(HttpContext.Session.GetString("Cart"));
+            return View(weapons);
         }
 
         public ActionResult Delete(int id)
         {
             weapons = JsonSerializer.Deserialize<List<Infastructure.Entities.Weapon>>(HttpContext.Session.GetString("Cart"));
-            Infastructure.Entities.Weapon weapon = _context.Weapon.Find(id);
+            Infastructure.Entities.Weapon weapon = weapons.Find(w => w.Id == id);
             weapons.Remove(weapon);
             HttpContext.Session.SetString("Cart", JsonSerializer.Serialize<List<Infastructure.Entities.Weapon>>(weapons));
-            return RedirectToAction("Get");
+            return RedirectToAction("Index", "Cart");
         }
     }
 }

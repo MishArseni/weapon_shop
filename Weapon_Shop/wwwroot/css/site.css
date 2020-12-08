@@ -12,6 +12,15 @@ a {
   color: #0366d6;
 }
 
+header{
+    justify-content:center;
+    display:flex;
+}
+
+nav {
+    width: 100%;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
@@ -35,8 +44,19 @@ html {
   }
 }
 
+.my__catalog {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cart__container{
+    margin-right:15px;
+    margin-bottom:15px;
+}
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;

@@ -1,0 +1,48 @@
+﻿@model Weapon_Shop.Feature.Weapon_Feature.Create.Command
+
+<form asp-action="Create" asp-controller="Feature" method="post" enctype="multipart/form-data" class="form">
+
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Name">Название</label><br />
+        <input asp-for="Name" />
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Country">Страна</label><br />
+        <input asp-for="Country" />
+        <span asp-validation-for="Country" />
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Caliber">Калибр</label><br />
+        <input asp-for="Caliber" />
+        <span asp-validation-for="Caliber" />
+    </div>    
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Capacity">Вместимость</label><br />
+        <input asp-for="Capacity" />
+        <span asp-validation-for="Capacity" />
+    </div>    
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Material">Материал</label><br />
+        <input asp-for="Material" />
+        <span asp-validation-for="Material" />
+    </div>    
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Speed">Скорость пули</label><br />
+        <input asp-for="Speed" />
+        <span asp-validation-for="Speed" />
+    </div>    
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Weight">Вес</label><br />
+        <input asp-for="Weight" />
+        <span asp-validation-for="Weight" />
+    </div>    
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Type">Тип</label><br />
+        <input asp-for="Type" />
+        <span asp-validation-for="Type" />
+    </div>
+
+    <div>
+        <input type="submit" value="Создать" class="btn btn-primary" />
+    </div>
+</form>

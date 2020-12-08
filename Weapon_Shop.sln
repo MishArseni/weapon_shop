@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weapon_Shop", "Weapon_Shop\Weapon_Shop.csproj", "{2319C497-533B-49BF-A882-9CC2CB3984C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weapon_Shop", "Weapon_Shop\Weapon_Shop.csproj", "{2319C497-533B-49BF-A882-9CC2CB3984C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infastructure", "Infastructure\Infastructure.csproj", "{FA79F0D1-6FE6-483D-BE21-C1E6BD5FD525}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infastructure", "Infastructure\Infastructure.csproj", "{FA79F0D1-6FE6-483D-BE21-C1E6BD5FD525}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weapon_Shop.Tests", "Weapon_Shop.Tests\Weapon_Shop.Tests.csproj", "{DFAEAEC0-24F3-48FF-B1F2-CD94E5B69015}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FA79F0D1-6FE6-483D-BE21-C1E6BD5FD525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA79F0D1-6FE6-483D-BE21-C1E6BD5FD525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA79F0D1-6FE6-483D-BE21-C1E6BD5FD525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFAEAEC0-24F3-48FF-B1F2-CD94E5B69015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFAEAEC0-24F3-48FF-B1F2-CD94E5B69015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFAEAEC0-24F3-48FF-B1F2-CD94E5B69015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFAEAEC0-24F3-48FF-B1F2-CD94E5B69015}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
